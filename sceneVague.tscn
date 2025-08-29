@@ -1,4 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://1xuxqglsy7al"]
+[gd_scene load_steps=10 format=3 uid="uid://1xuxqglsy7al"]
+
+[ext_resource type="Script" uid="uid://dugatc6hedd8o" path="res://fluid.gd" id="1_464eo"]
+[ext_resource type="Script" uid="uid://sc6k3ewjb1ml" path="res://buoyancy.gd" id="1_nt02h"]
 
 [sub_resource type="Shader" id="Shader_pq161"]
 code = "// NOTE: Shader automatically converted from Godot Engine 4.4.1.stable.mono's StandardMaterial3D.
@@ -117,7 +120,7 @@ noise = SubResource("FastNoiseLite_nt02h")
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_rpy7i"]
 render_priority = 0
 shader = SubResource("Shader_pq161")
-shader_parameter/albedo = Color(0.454902, 1, 1, 0.4)
+shader_parameter/albedo = Color(0.278431, 0.603922, 1, 0.4)
 shader_parameter/albedo_texture_size = Vector2i(0, 0)
 shader_parameter/point_size = 1.0
 shader_parameter/roughness = 0.0
@@ -137,16 +140,34 @@ shader_parameter/uv2_offset = Vector3(0, 0, 0)
 
 [sub_resource type="BoxMesh" id="BoxMesh_4rr82"]
 material = SubResource("ShaderMaterial_rpy7i")
-size = Vector3(200, 0.925, 200)
+size = Vector3(200, 1, 200)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_464eo"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_464eo"]
 
 [node name="Node3D" type="Node3D"]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(2.19, 0, 0, 0, 2.19, 0, 0, 0, 2.19, 0.0809526, -0.186349, 0.00859499)
+[node name="water" type="MeshInstance3D" parent="."]
+transform = Transform3D(2.19, 0, 0, 0, 2.19, 0, 0, 0, 2.19, 0, 1.39369, 0)
 mesh = SubResource("BoxMesh_4rr82")
+script = ExtResource("1_464eo")
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.98427, 0.176672, 0, -0.176672, 0.98427, 0, 7.55641, 56.6999)
+[node name="camera" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.897774, 0.440456, 0, -0.440456, 0.897774, 0, 5.28199, 4.05349)
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+[node name="sun" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.594823, 0.620276, -0.511316, 0, 0.636078, 0.771625, 0.803857, 0.45898, -0.378354, 0, 47.3176, 0)
+light_color = Color(0.85098, 1, 0.741176, 1)
+
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.45512, 0)
+mass = 0.8
+script = ExtResource("1_nt02h")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+shape = SubResource("BoxShape3D_464eo")
+
+[node name="cube" type="MeshInstance3D" parent="RigidBody3D/CollisionShape3D"]
+mesh = SubResource("BoxMesh_464eo")
+skeleton = NodePath("../../..")

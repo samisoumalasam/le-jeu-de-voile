@@ -144,3 +144,9 @@ size = Vector3(200, 0.925, 200)
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(2.19, 0, 0, 0, 2.19, 0, 0, 0, 2.19, 0.0809526, -0.186349, 0.00859499)
 mesh = SubResource("BoxMesh_4rr82")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.98427, 0.176672, 0, -0.176672, 0.98427, 0, 7.55641, 56.6999)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.594823, 0.620276, -0.511316, 0, 0.636078, 0.771625, 0.803857, 0.45898, -0.378354, 0, 47.3176, 0)

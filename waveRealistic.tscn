@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://mu4h70x83xs6"]
+
+[ext_resource type="Material" uid="uid://d3gdd8835alko" path="res://Shaders/new_shader_material.tres" id="1_ha6uo"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_tk7n6"]
+subdivide_width = 58
+subdivide_depth = 200
+orientation = 1
+
+[node name="Map" type="MeshInstance3D"]
+mesh = SubResource("QuadMesh_tk7n6")
+surface_material_override/0 = ExtResource("1_ha6uo")

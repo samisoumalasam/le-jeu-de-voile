@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://b77xuntub2rtg"]
+
+[ext_resource type="Material" uid="uid://d3gdd8835alko" path="res://Shaders/new_shader_material.tres" id="1_ubjvq"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_cy6w2"]
+size = Vector2(20, 20)
+subdivide_width = 200
+subdivide_depth = 200
+orientation = 1
+
+[node name="WaterPlane" type="MeshInstance3D"]
+transform = Transform3D(1.285, 0, 0, 0, 1.285, 0, 0, 0, 1.285, 0, 0, 0)
+material_override = ExtResource("1_ubjvq")
+cast_shadow = 0
+mesh = SubResource("QuadMesh_cy6w2")
+surface_material_override/0 = ExtResource("1_ubjvq")

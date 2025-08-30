@@ -38,14 +38,13 @@ float fresnel(float amount,vec3 normal, vec3 view){
 float edge(float depth){
 	depth = 2.0 *depth -1.0;
 	return near * fart / (fart + depth * (near - fart));
-	
 }
 
 void vertex() {
 	// Called for every vertex the material is visible on.
 	world_pos = (MODEL_MATRIX * vec4(VERTEX,1.0)).xyz;
 	height = texture(wave,world_pos.xz / noise_scale + TIME *time_scale).r;
-	VERTEX.y += height * height_scale;
+	VERTEX.y += pow(height * height_scale,1.5);
 }
 
 void fragment() {
@@ -55,32 +54,32 @@ void fragment() {
 	float depth_blend = exp((depth + VERTEX.z + depth_offset)*-beers_law);
 	depth_blend = clamp(1.0 - depth_blend,0.0,1.0);
 	float depth_blend_power = clamp(pow(depth_blend,2.5),0.0,1.0);
-	
+
 	vec3 screen_color = textureLod(SCREEN_TEXTURE,SCREEN_UV,depth_blend_power*2.5).rgb;
 	vec3 depth_color = mix(color_shallow.rgb,color_deep.rgb,depth_blend_power);
 	vec3 color = mix(screen_color * depth_color, depth_color*0.25,depth_blend_power*0.5);
-	
+
 	float z_depth = edge(texture(DEPTH_TEXTURE,SCREEN_UV).x);
 	float z_pos = edge(FRAGCOORD.z);
 	float z_dif = z_depth - z_pos;
-	
+
 	//Time calculation for wave movement (dependent on the normal map)
 	vec2 time = (TIME * wave_direction) * time_scale;
 	vec2 time2 = (TIME * wave_direction2) * time_scale;
-	
-	
-	//Blend the 2 texture into 1 
+
+
+	//Blend the 2 texture into 1
 	vec3 normal_blend = mix(texture(texture_normal,world_pos.xz + time).rgb,texture(texture_normal2,world_pos.xz+time2).rgb,0.5);
-	
+
 	float fresnel = fresnel(5.0, NORMAL,VIEW);
 	vec3 surface_color = mix(albedo,albedo2,fresnel);
-	
+
 	vec3 depth_color_adj = mix(edge_color,color, step(edge_scale, z_dif));
-	
+
 	ALBEDO = clamp(surface_color + depth_color_adj,vec3(0.0),vec3(1.0));
 	METALLIC = metallic;
 	ROUGHNESS = roughness;
-	NORMAL = normal_blend; 
+	NORMAL = normal_blend;
 }
 
 //void light() {

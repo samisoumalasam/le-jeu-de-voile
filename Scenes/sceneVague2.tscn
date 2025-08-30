@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://bhqjvkqh5vjfj"]
+
+[ext_resource type="Material" uid="uid://rkrmamce18j3" path="res://Shaders/new_shader_material2.tres" id="1_af1a1"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_vg3u8"]
+subdivide_width = 200
+subdivide_depth = 200
+orientation = 1
+
+[node name="SceneVague2" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("QuadMesh_vg3u8")
+surface_material_override/0 = ExtResource("1_af1a1")

@@ -15,6 +15,7 @@ noise = SubResource("FastNoiseLite_ihkbn")
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_iaokx"]
 noise_type = 3
 seed = 10
+frequency = 0.0479
 fractal_type = 2
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_jafa1"]
@@ -24,6 +25,7 @@ bump_strength = 32.0
 noise = SubResource("FastNoiseLite_iaokx")
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_xfqbf"]
+frequency = 1.0
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_iaokx"]
 seamless = true
@@ -42,9 +44,9 @@ shader_parameter/texture_normal = SubResource("NoiseTexture2D_xfqbf")
 shader_parameter/texture_normal2 = SubResource("NoiseTexture2D_jafa1")
 shader_parameter/wave_direction = Vector2(2, 0)
 shader_parameter/wave_direction2 = Vector2(0, 1)
-shader_parameter/time_scale = 0.01
-shader_parameter/noise_scale = 10.0
-shader_parameter/height_scale = 0.15
+shader_parameter/time_scale = 0.001
+shader_parameter/noise_scale = 4000.0
+shader_parameter/height_scale = 3.0
 shader_parameter/color_deep = Color(0, 0, 0, 1)
 shader_parameter/color_shallow = Color(0, 0, 0, 1)
 shader_parameter/beers_law = 2.0

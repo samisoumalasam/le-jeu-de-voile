@@ -4,9 +4,9 @@
 [ext_resource type="PackedScene" uid="uid://ddywhmjm1f06p" path="res://3DModel/optimiste_voile.blend" id="2_ubjvq"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_cy6w2"]
-size = Vector2(50, 50)
-subdivide_width = 200
-subdivide_depth = 200
+size = Vector2(200, 200)
+subdivide_width = 800
+subdivide_depth = 800
 orientation = 1
 
 [node name="Scene" type="Node3D"]
@@ -19,4 +19,4 @@ mesh = SubResource("QuadMesh_cy6w2")
 surface_material_override/0 = ExtResource("1_ubjvq")
 
 [node name="optimiste_voile" parent="." instance=ExtResource("2_ubjvq")]
-transform = Transform3D(25.76, 0, 0, 0, 25.7486, -0.766451, 0, 0.766451, 25.7486, 44.6262, 95.1917, 8.40739)
+transform = Transform3D(25.76, 0, 0, 0, 25.7486, -0.766451, 0, 0.766451, 25.7486, 44.6262, 155.459, 8.40739)

@@ -26,6 +26,13 @@ uniform float near = 1.0;
 uniform float far = 100.0;
 uniform vec3 edge_color : source_color;
 
+// === Foam parameters === // editer
+uniform float foam_strength : hint_range(0.0,1.0) = 0.7; // Intensité écume // editer
+uniform float foam_slope_min : hint_range(0.0,1.0) = 0.05; // Début slope // editer
+uniform float foam_slope_max : hint_range(0.0,1.0) = 0.2;  // Max slope // editer
+uniform float foam_height_min : hint_range(0.0,1.0) = 0.5; // Hauteur min // editer
+uniform float foam_height_max : hint_range(0.0,1.0) = 0.8; // Hauteur max // editer
+
 //Varying varying
 varying float height;
 varying vec3 world_pos;
@@ -70,6 +77,32 @@ void fragment() {
 	vec3 normal_blend = mix(texture(texture_normal, world_pos.xz / noise_scale + time).rgb, texture(texture_normal2, world_pos.xz / noise_scale + time2).rgb, 0.5);
 	float fresnel = fresnel(5.0, NORMAL,VIEW);
 	vec3 surface_color = mix(albedo, albedo2,fresnel);
+	
+	/// === Foam dynamique basé sur waves === // editer
+
+	// Vague principale (déjà animée avec gdscript_time)
+	float wave_tex1 = texture(wave, world_pos.xz / noise_scale + time * 0.5).r; // editer
+	float wave_tex2 = texture(wave, world_pos.xz / noise_scale * 1.5 + time2 * 0.7).r; // editer
+
+	// Combinaison des waves → crée des motifs qui bougent, se séparent, fusionnent
+	float wave_mix = abs(wave_tex1 - wave_tex2); // editer
+
+	// Ajoute un slope pour accentuer les crêtes
+	float slope = length(vec2(dFdx(wave_mix), dFdy(wave_mix))); // editer
+
+	// Masque écume avec waves qui défilent
+	float foam_mask = smoothstep(foam_slope_min, foam_slope_max, slope) // editer
+	                * smoothstep(foam_height_min, foam_height_max, wave_mix); // editer
+
+	// Ajout de bruit animé pour casser le pattern
+	float foam_noise = texture(texture_normal, world_pos.xz * 0.5 + gdscript_time * 0.2).r; // editer
+	foam_mask *= foam_noise * foam_strength; // editer
+
+	// Couleur écume
+	vec3 foam_color = vec3(1.0); // editer
+	color = mix(color, foam_color, foam_mask); // editer
+
+	
 	//edge
 	vec3 depth_color_adj = mix(edge_color,color,step(edge_scale,z_dif));
 	

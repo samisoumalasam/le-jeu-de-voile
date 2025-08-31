@@ -1,7 +1,7 @@
 [gd_resource type="ShaderMaterial" load_steps=7 format=3 uid="uid://d3gdd8835alko"]
 
 [ext_resource type="Shader" uid="uid://cj7xs7g37do60" path="res://scripts/shaders/Water.gdshader" id="1_6txim"]
-[ext_resource type="Texture2D" uid="uid://cw8qnlxcbi1ww" path="res://visual_assets/3D_model/textures/wave_height_map.tres" id="2_n8ru8"]
+[ext_resource type="Texture2D" uid="uid://cw8qnlxcbi1ww" path="res://visual_assets/textures/wave_height_map.tres" id="2_n8ru8"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_ihkbn"]
 noise_type = 3

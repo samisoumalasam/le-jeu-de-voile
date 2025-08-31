@@ -1,0 +1,95 @@
+[gd_scene load_steps=10 format=4 uid="uid://lcm3gfxkqw7s"]
+
+[ext_resource type="Script" uid="uid://565v3quw7jg" path="res://Scenes/prefabs/object_water_physic.gd" id="1_81sid"]
+[ext_resource type="PackedScene" uid="uid://ddywhmjm1f06p" path="res://visual_assets/3D_model/optimiste_voile.blend" id="2_xogql"]
+[ext_resource type="Shader" uid="uid://d31y24t7b48au" path="res://scripts/shaders/prevent_clipping_water.gdshader" id="3_hdshq"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4sofn"]
+size = Vector3(10.11, 1.79, 4.63)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_n75ux"]
+render_priority = 0
+shader = ExtResource("3_hdshq")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_woops"]
+render_priority = 0
+shader = ExtResource("3_hdshq")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mvuuy"]
+resource_name = "Material.002"
+cull_mode = 2
+albedo_color = Color(0.906332, 0.906332, 0.906332, 1)
+roughness = 0.5
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_wg2px"]
+_surfaces = [{
+"aabb": AABB(-13.2067, 0, -6.11137, 23.9721, 1e-05, 12.2227),
+"format": 34896613377,
+"index_count": 54,
+"index_data": PackedByteArray("AAABAAIAAwABAAAAAQAEAAUAAQAGAAQAAQADAAYABAAGAAcABgADAAgACAADAAkABgAIAAoACgALAAYACgAMAAsACwAMAA0ADgAMAAoADAAOAA8ADwAOABAADgAKABEAEQAKABIADgARABMA"),
+"name": "Material.002",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 20,
+"vertex_data": PackedByteArray("KqAAAAAAAABERgAAFw8AAHl0AABBBAAAnuEAAPYEAACXCgAAW0EAAI8YAAAqKwAAAAAAAP9/AAC5AAAA11cAACf+AACSHQAAuvEAAIsJAAD//wAA/38AALkAAAAnqAAAjxgAANTUAACXCgAAo74AACqgAAD//wAAREYAAOfwAAB5dAAAvfsAALrxAABz9gAAJ/4AAGziAACe4QAACPsAAA==")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_n75ux"]
+resource_name = "optimiste_mask_Cube_001"
+_surfaces = [{
+"aabb": AABB(-13.2067, 0, -6.11137, 23.9721, 1e-05, 12.2227),
+"attribute_data": PackedByteArray("AAD//wAA//8AAP//AAD//wAA//8AAP//AAD//wAA//8AAP//AAD//wAA//8AAP//AAD//wAA//8AAP//AAD//wAA//8AAP//AAD//wAA//8="),
+"format": 34896613399,
+"index_count": 54,
+"index_data": PackedByteArray("AAABAAIAAwABAAAAAQAEAAUAAQAGAAQAAQADAAYABAAGAAcABgADAAgACAADAAkABgAIAAoACgALAAYACgAMAAsACwAMAA0ADgAMAAoADAAOAA8ADwAOABAADgAKABEAEQAKABIADgARABMA"),
+"material": SubResource("StandardMaterial3D_mvuuy"),
+"name": "Material.002",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 20,
+"vertex_data": PackedByteArray("KqAAAAAA/79ERgAAFw//v3l0AABBBP+/nuEAAPYE/7+XCgAAW0H/v48YAAAqK/+/AAAAAP9//7+5AAAA11f/vyf+AACSHf+/uvEAAIsJ/7///wAA/3//v7kAAAAnqP+/jxgAANTU/7+XCgAAo77/vyqgAAD///+/REYAAOfw/795dAAAvfv/v7rxAABz9v+/J/4AAGzi/7+e4QAACPv/v////3////9/////f////3////9/////f////3////9/////f////3////9/////f////3////9/////f////3////9/////f////3////9/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_wg2px")
+
+[node name="player2" type="RigidBody3D"]
+transform = Transform3D(-0.222484, 0, -0.974936, 0, 1, 0, 0.974936, 0, -0.222484, 0, 0, 0)
+mass = 40.0
+center_of_mass_mode = 1
+center_of_mass = Vector3(0, -8.18, 0)
+angular_damp = 3.0
+script = ExtResource("1_81sid")
+object_volume = 100.0
+water_linear_damping = 2.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.507, -0.865, 0)
+shape = SubResource("BoxShape3D_4sofn")
+
+[node name="MeshVisuals" type="Node3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.700466, 0, 0)
+
+[node name="optimiste_voile" parent="MeshVisuals" instance=ExtResource("2_xogql")]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
+
+[node name="coque_001" type="MeshInstance3D" parent="MeshVisuals"]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
+material_override = SubResource("ShaderMaterial_n75ux")
+material_overlay = SubResource("ShaderMaterial_woops")
+mesh = SubResource("ArrayMesh_n75ux")
+skeleton = NodePath("")
+
+[node name="Corners" type="Node3D" parent="."]
+
+[node name="BL" type="Node3D" parent="Corners"]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 4.9808, -1.8334, 2.4712)
+
+[node name="FL" type="Node3D" parent="Corners"]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, -4.9808, -1.8334, 2.4712)
+
+[node name="BR" type="Node3D" parent="Corners"]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 4.9808, -1.8334, -2.4712)
+
+[node name="FR" type="Node3D" parent="Corners"]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, -4.9808, -1.8334, -2.4712)

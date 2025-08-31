@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://b77xuntub2rtg"]
+[gd_scene load_steps=4 format=3 uid="uid://bo7iyye4ju0s3"]
 
 [ext_resource type="Material" uid="uid://d3gdd8835alko" path="res://visual_assets/material/new_shader_material.tres" id="1_ubjvq"]
 [ext_resource type="PackedScene" uid="uid://ddywhmjm1f06p" path="res://visual_assets/3D_model/optimiste_voile.blend" id="2_ubjvq"]

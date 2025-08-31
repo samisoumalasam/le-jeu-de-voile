@@ -1,0 +1,45 @@
+[gd_scene load_steps=6 format=3 uid="uid://diqtiala8idx4"]
+
+[ext_resource type="Script" uid="uid://565v3quw7jg" path="res://scenes/maps/object_water_physic.gd" id="1_8pwl8"]
+[ext_resource type="Script" uid="uid://damh1if6vtx3h" path="res://scenes/maps/water_manager.gd" id="1_acd8e"]
+[ext_resource type="Material" uid="uid://d3gdd8835alko" path="res://visual_assets/shaders/new_shader_material.tres" id="1_jl51k"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_tmirq"]
+size = Vector2(50, 50)
+subdivide_width = 1000
+subdivide_depth = 1000
+orientation = 1
+
+[sub_resource type="BoxMesh" id="BoxMesh_l2dom"]
+size = Vector3(0.2, 0.1, 0.1)
+
+[node name="CustomWaterJustin" type="Node3D"]
+
+[node name="WaterPlane" type="MeshInstance3D" parent="."]
+material_override = ExtResource("1_jl51k")
+cast_shadow = 0
+mesh = SubResource("QuadMesh_tmirq")
+surface_material_override/0 = ExtResource("1_jl51k")
+script = ExtResource("1_acd8e")
+
+[node name="rectangle" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_l2dom")
+script = ExtResource("1_8pwl8")
+
+[node name="ray_start_0" type="Node3D" parent="rectangle"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, -0.5, -0.5)
+
+[node name="ray_start_1" type="Node3D" parent="rectangle"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -0.5, 0.5)
+
+[node name="ray_start_2" type="Node3D" parent="rectangle"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -0.5, -0.5)
+
+[node name="ray_start_3" type="Node3D" parent="rectangle"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, -0.5, 0.5)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.906912, 0.421321, 0, -0.421321, 0.906912, 0, 2.39696, 2.88882)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.580845, 0.814014, 0, -0.814014, 0.580845, -132.422, 5.88168, 0)

@@ -1,7 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://1xuxqglsy7al"]
+[gd_scene load_steps=8 format=3 uid="uid://1xuxqglsy7al"]
 
-[ext_resource type="Script" uid="uid://dugatc6hedd8o" path="res://fluid.gd" id="1_464eo"]
-[ext_resource type="Script" uid="uid://sc6k3ewjb1ml" path="res://buoyancy.gd" id="1_nt02h"]
+[ext_resource type="Script" uid="uid://dugatc6hedd8o" path="res://scenes/maps/fluid.gd" id="1_464eo"]
+[ext_resource type="PackedScene" uid="uid://cuj41iqo7beut" path="res://scenes/prefabs/cube_buoyancy.tscn" id="2_yxany"]
 
 [sub_resource type="Shader" id="Shader_pq161"]
 code = "// NOTE: Shader automatically converted from Godot Engine 4.4.1.stable.mono's StandardMaterial3D.
@@ -142,10 +142,6 @@ shader_parameter/uv2_offset = Vector3(0, 0, 0)
 material = SubResource("ShaderMaterial_rpy7i")
 size = Vector3(200, 1, 200)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_464eo"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_464eo"]
-
 [node name="Node3D" type="Node3D"]
 
 [node name="water" type="MeshInstance3D" parent="."]
@@ -160,14 +156,5 @@ transform = Transform3D(1, 0, 0, 0, 0.897774, 0.440456, 0, -0.440456, 0.897774, 
 transform = Transform3D(-0.594823, 0.620276, -0.511316, 0, 0.636078, 0.771625, 0.803857, 0.45898, -0.378354, 0, 47.3176, 0)
 light_color = Color(0.85098, 1, 0.741176, 1)
 
-[node name="RigidBody3D" type="RigidBody3D" parent="."]
+[node name="RigidBody3D" parent="." instance=ExtResource("2_yxany")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.45512, 0)
-mass = 0.8
-script = ExtResource("1_nt02h")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
-shape = SubResource("BoxShape3D_464eo")
-
-[node name="cube" type="MeshInstance3D" parent="RigidBody3D/CollisionShape3D"]
-mesh = SubResource("BoxMesh_464eo")
-skeleton = NodePath("../../..")

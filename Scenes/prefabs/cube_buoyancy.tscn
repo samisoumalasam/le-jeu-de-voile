@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://cuj41iqo7beut"]
+
+[ext_resource type="Script" uid="uid://sc6k3ewjb1ml" path="res://scenes/prefabs/buoyancy.gd" id="1_nedj3"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_464eo"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_464eo"]
+
+[node name="RigidBody3D" type="RigidBody3D"]
+mass = 0.8
+script = ExtResource("1_nedj3")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_464eo")
+
+[node name="cube" type="MeshInstance3D" parent="CollisionShape3D"]
+mesh = SubResource("BoxMesh_464eo")
+skeleton = NodePath("../../..")

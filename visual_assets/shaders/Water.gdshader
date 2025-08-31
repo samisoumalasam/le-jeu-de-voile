@@ -14,6 +14,7 @@ uniform vec2 wave_direction2 = vec2(0.0,1.0);
 uniform float time_scale : hint_range(0.0,0.2,0.001) = 0.025;
 uniform float noise_scale = 10.0;
 uniform float height_scale = 0.15;
+uniform float gdscript_time;
 
 uniform vec4 color_deep : source_color;
 uniform vec4 color_shallow : source_color;
@@ -44,7 +45,7 @@ float edge(float depth){
 void vertex() {
 	// Called for every vertex the material is visible on.
 	world_pos = (MODEL_MATRIX * vec4(VERTEX,1.0)).xyz;
-	height = texture(wave,world_pos.xz / noise_scale + TIME *time_scale).r;
+	height = texture(wave,world_pos.xz / noise_scale + gdscript_time * time_scale).r;
 	VERTEX.y += height * height_scale;
 }
 
@@ -65,8 +66,8 @@ void fragment() {
 	float z_dif = z_depth - z_pos;
 	
 	//Time calculation for wave movement (dependent on the normal map)
-	vec2 time = (TIME * wave_direction) * time_scale;
-	vec2 time2 = (TIME * wave_direction2) * time_scale;
+	vec2 time = (gdscript_time * wave_direction) * time_scale;
+	vec2 time2 = (gdscript_time * wave_direction2) * time_scale;
 	
 	
 	//Blend the 2 texture into 1 

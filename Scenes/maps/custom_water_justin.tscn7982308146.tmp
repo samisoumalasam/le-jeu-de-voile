@@ -1,0 +1,54 @@
+[gd_scene load_steps=6 format=3 uid="uid://diqtiala8idx4"]
+
+[ext_resource type="Script" uid="uid://damh1if6vtx3h" path="res://scenes/maps/water_manager.gd" id="1_acd8e"]
+[ext_resource type="Material" uid="uid://d3gdd8835alko" path="res://visual_assets/shaders/new_shader_material.tres" id="1_jl51k"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_l2dom"]
+size = Vector3(2, 1, 1)
+
+[sub_resource type="GDScript" id="GDScript_ubjvq"]
+script/source = "extends Node3D
+
+@export var height_map: NoiseTexture2D
+
+func _ready() -> void:
+	if height_map == null:
+		height_map = load(\"res://visual_assets/3D_model/textures/wave_height_map.tres\")
+	
+	
+func _process(delta: float) -> void:
+	pass
+	# print(height_map.get_image().get_pixel(global_position.x, global_position.z))
+"
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_tmirq"]
+size = Vector2(50, 50)
+subdivide_width = 200
+subdivide_depth = 200
+
+[node name="CustomWaterJustin" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.41637, 0)
+mesh = SubResource("BoxMesh_l2dom")
+script = SubResource("GDScript_ubjvq")
+
+[node name="ray_start_0" type="Node3D" parent="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, -0.5, -0.5)
+
+[node name="ray_start_1" type="Node3D" parent="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -0.5, 0.5)
+
+[node name="ray_start_2" type="Node3D" parent="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -0.5, -0.5)
+
+[node name="ray_start_3" type="Node3D" parent="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, -0.5, 0.5)
+
+[node name="Node3D" type="Node3D" parent="."]
+script = ExtResource("1_acd8e")
+
+[node name="Ocean" type="MeshInstance3D" parent="Node3D"]
+material_override = ExtResource("1_jl51k")
+mesh = SubResource("PlaneMesh_tmirq")
+skeleton = NodePath("../..")

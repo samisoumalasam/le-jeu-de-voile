@@ -1,0 +1,818 @@
+[gd_scene load_steps=7 format=3 uid="uid://diqtiala8idx4"]
+
+[ext_resource type="Script" uid="uid://565v3quw7jg" path="res://scenes/maps/object_water_physic.gd" id="1_8pwl8"]
+[ext_resource type="Script" uid="uid://damh1if6vtx3h" path="res://scenes/maps/water_manager.gd" id="1_acd8e"]
+[ext_resource type="Material" uid="uid://d3gdd8835alko" path="res://visual_assets/shaders/new_shader_material.tres" id="1_jl51k"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_tmirq"]
+size = Vector2(50, 50)
+subdivide_width = 200
+subdivide_depth = 200
+orientation = 1
+
+[sub_resource type="BoxMesh" id="BoxMesh_l2dom"]
+size = Vector3(2, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_tmirq"]
+size = Vector3(0.5, 0.09, 0.5)
+
+[node name="CustomWaterJustin" type="Node3D"]
+
+[node name="WaterPlane" type="MeshInstance3D" parent="."]
+material_override = ExtResource("1_jl51k")
+cast_shadow = 0
+mesh = SubResource("QuadMesh_tmirq")
+surface_material_override/0 = ExtResource("1_jl51k")
+script = ExtResource("1_acd8e")
+
+[node name="rectangle" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1000, 14.441, 0)
+mesh = SubResource("BoxMesh_l2dom")
+script = ExtResource("1_8pwl8")
+
+[node name="ray_start_0" type="Node3D" parent="rectangle"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, -0.5, -0.5)
+
+[node name="ray_start_1" type="Node3D" parent="rectangle"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -0.5, 0.5)
+
+[node name="ray_start_2" type="Node3D" parent="rectangle"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -0.5, -0.5)
+
+[node name="ray_start_3" type="Node3D" parent="rectangle"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, -0.5, 0.5)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.906912, 0.421321, 0, -0.421321, 0.906912, 0, 2.39696, 2.88882)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.580845, 0.814014, 0, -0.814014, 0.580845, -132.422, 5.88168, 0)
+
+[node name="Node3D" type="Node3D" parent="."]
+
+[node name="rectangle" type="MeshInstance3D" parent="Node3D"]
+mesh = SubResource("BoxMesh_tmirq")
+skeleton = NodePath("../..")
+script = ExtResource("1_8pwl8")
+
+[node name="rectangle2" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+mesh = SubResource("BoxMesh_tmirq")
+skeleton = NodePath("../..")
+script = ExtResource("1_8pwl8")
+
+[node name="rectangle3" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+mesh = SubResource("BoxMesh_tmirq")
+skeleton = NodePath("../..")
+script = ExtResource("1_8pwl8")
+
+[node name="rectangle4" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1)
+mesh = SubResource("BoxMesh_tmirq")
+skeleton = NodePath("../..")
+script = ExtResource("1_8pwl8")
+
+[node name="rectangle5" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.95487)
+mesh = SubResource("BoxMesh_tmirq")
+skeleton = NodePath("../..")
+script = ExtResource("1_8pwl8")
+
+[node name="rectangle6" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1.95487)
+mesh = SubResource("BoxMesh_tmirq")
+skeleton = NodePath("../..")
+script = ExtResource("1_8pwl8")
+
+[node name="rectangle7" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.95487)
+mesh = SubResource("BoxMesh_tmirq")
+skeleton = NodePath("../..")
+script = ExtResource("1_8pwl8")
+
+[node name="rectangle8" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 2.95487)
+mesh = SubResource("BoxMesh_tmirq")
+skeleton = NodePath("../..")
+script = ExtResource("1_8pwl8")
+
+[node name="rectangle9" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.97352)
+mesh = SubResource("BoxMesh_tmirq")
+skeleton = NodePath("../..")
+script = ExtResource("1_8pwl8")
+
+[node name="rectangle10" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 3.97352)
+mesh = SubResource("BoxMesh_tmirq")
+skeleton = NodePath("../..")
+script = ExtResource("1_8pwl8")
+
+[node name="rectangle11" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.97352)
+mesh = SubResource("BoxMesh_tmirq")
+skeleton = NodePath("../..")
+script = ExtResource("1_8pwl8")
+
+[node name="rectangle12" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 4.97352)
+mesh = SubResource("BoxMesh_tmirq")
+skeleton = NodePath("../..")
+script = ExtResource("1_8pwl8")
+
+[node name="rectangle13" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5.8646)
+mesh = SubResource("BoxMesh_tmirq")
+skeleton = NodePath("../..")
+script = ExtResource("1_8pwl8")
+
+[node name="rectangle14" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 5.8646)
+mesh = SubResource("BoxMesh_tmirq")
+skeleton = NodePath("../..")
+script = ExtResource("1_8pwl8")
+
+[node name="rectangle15" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6.8646)
+mesh = SubResource("BoxMesh_tmirq")
+skeleton = NodePath("../..")
+script = ExtResource("1_8pwl8")
+
+[node name="rectangle16" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 6.8646)
+mesh = SubResource("BoxMesh_tmirq")
+skeleton = NodePath("../..")
+script = ExtResource("1_8pwl8")
+
+[node name="rectangle17" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7.96055)
+mesh = SubResource("BoxMesh_tmirq")
+skeleton = NodePath("../..")
+script = ExtResource("1_8pwl8")
+
+[node name="rectangle18" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 7.96055)
+mesh = SubResource("BoxMesh_tmirq")
+skeleton = NodePath("../..")
+script = ExtResource("1_8pwl8")
+
+[node name="rectangle19" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8.96055)
+mesh = SubResource("BoxMesh_tmirq")
+skeleton = NodePath("../..")
+script = ExtResource("1_8pwl8")
+
+[node name="rectangle20" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 8.96055)
+mesh = SubResource("BoxMesh_tmirq")
+skeleton = NodePath("../..")
+script = ExtResource("1_8pwl8")
+
+[node name="rectangle21" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 9.93908)
+mesh = SubResource("BoxMesh_tmirq")
+skeleton = NodePath("../..")
+script = ExtResource("1_8pwl8")
+
+[node name="rectangle22" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 9.93908)
+mesh = SubResource("BoxMesh_tmirq")
+skeleton = NodePath("../..")
+script = ExtResource("1_8pwl8")
+
+[node name="rectangle23" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10.9391)
+mesh = SubResource("BoxMesh_tmirq")
+skeleton = NodePath("../..")
+script = ExtResource("1_8pwl8")
+
+[node name="rectangle24" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 10.9391)
+mesh = SubResource("BoxMesh_tmirq")
+skeleton = NodePath("../..")
+script = ExtResource("1_8pwl8")
+
+[node name="rectangle25" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.9528)
+mesh = SubResource("BoxMesh_tmirq")
+skeleton = NodePath("../..")
+script = ExtResource("1_8pwl8")
+
+[node name="rectangle26" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -1.9528)
+mesh = SubResource("BoxMesh_tmirq")
+skeleton = NodePath("../..")
+script = ExtResource("1_8pwl8")
+
+[node name="rectangle27" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.952803)
+mesh = SubResource("BoxMesh_tmirq")
+skeleton = NodePath("../..")
+script = ExtResource("1_8pwl8")
+
+[node name="rectangle28" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -0.952803)
+mesh = SubResource("BoxMesh_tmirq")
+skeleton = NodePath("../..")
+script = ExtResource("1_8pwl8")
+
+[node name="rectangle29" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.89673)
+mesh = SubResource("BoxMesh_tmirq")
+skeleton = NodePath("../..")
+script = ExtResource("1_8pwl8")
+
+[node name="rectangle30" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -3.89673)
+mesh = SubResource("BoxMesh_tmirq")
+skeleton = NodePath("../..")
+script = ExtResource("1_8pwl8")
+
+[node name="rectangle31" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.89673)
+mesh = SubResource("BoxMesh_tmirq")
+skeleton = NodePath("../..")
+script = ExtResource("1_8pwl8")
+
+[node name="rectangle32" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -2.89673)
+mesh = SubResource("BoxMesh_tmirq")
+skeleton = NodePath("../..")
+script = ExtResource("1_8pwl8")
+
+[node name="rectangle33" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.97665, 0, 0)
+mesh = SubResource("BoxMesh_tmirq")
+skeleton = NodePath("../..")
+script = ExtResource("1_8pwl8")
+
+[node name="rectangle34" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.97665, 0, 0)
+mesh = SubResource("BoxMesh_tmirq")
+skeleton = NodePath("../..")
+script = ExtResource("1_8pwl8")
+
+[node name="rectangle35" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.97665, 0, 1)
+mesh = SubResource("BoxMesh_tmirq")
+skeleton = NodePath("../..")
+script = ExtResource("1_8pwl8")
+
+[node name="rectangle36" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.97665, 0, 1)
+mesh = SubResource("BoxMesh_tmirq")
+skeleton = NodePath("../..")
+script = ExtResource("1_8pwl8")
+
+[node name="rectangle37" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.97665, 0, 1.95487)
+mesh = SubResource("BoxMesh_tmirq")
+skeleton = NodePath("../..")
+script = ExtResource("1_8pwl8")
+
+[node name="rectangle38" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.97665, 0, 1.95487)
+mesh = SubResource("BoxMesh_tmirq")
+skeleton = NodePath("../..")
+script = ExtResource("1_8pwl8")
+
+[node name="rectangle39" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.97665, 0, 2.95487)
+mesh = SubResource("BoxMesh_tmirq")
+skeleton = NodePath("../..")
+script = ExtResource("1_8pwl8")
+
+[node name="rectangle40" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.97665, 0, 2.95487)
+mesh = SubResource("BoxMesh_tmirq")
+skeleton = NodePath("../..")
+script = ExtResource("1_8pwl8")
+
+[node name="rectangle41" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.97665, 0, 3.97352)
+mesh = SubResource("BoxMesh_tmirq")
+skeleton = NodePath("../..")
+script = ExtResource("1_8pwl8")
+
+[node name="rectangle42" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.97665, 0, 3.97352)
+mesh = SubResource("BoxMesh_tmirq")
+skeleton = NodePath("../..")
+script = ExtResource("1_8pwl8")
+
+[node name="rectangle43" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.97665, 0, 4.97352)
+mesh = SubResource("BoxMesh_tmirq")
+skeleton = NodePath("../..")
+script = ExtResource("1_8pwl8")
+
+[node name="rectangle44" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.97665, 0, 4.97352)
+mesh = SubResource("BoxMesh_tmirq")
+skeleton = NodePath("../..")
+script = ExtResource("1_8pwl8")
+
+[node name="rectangle45" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.97665, 0, 5.8646)
+mesh = SubResource("BoxMesh_tmirq")
+skeleton = NodePath("../..")
+script = ExtResource("1_8pwl8")
+
+[node name="rectangle46" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.97665, 0, 5.8646)
+mesh = SubResource("BoxMesh_tmirq")
+skeleton = NodePath("../..")
+script = ExtResource("1_8pwl8")
+
+[node name="rectangle47" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.97665, 0, 6.8646)
+mesh = SubResource("BoxMesh_tmirq")
+skeleton = NodePath("../..")
+script = ExtResource("1_8pwl8")
+
+[node name="rectangle48" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.97665, 0, 6.8646)
+mesh = SubResource("BoxMesh_tmirq")
+skeleton = NodePath("../..")
+script = ExtResource("1_8pwl8")
+
+[node name="rectangle49" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.97665, 0, 7.96055)
+mesh = SubResource("BoxMesh_tmirq")
+skeleton = NodePath("../..")
+script = ExtResource("1_8pwl8")
+
+[node name="rectangle50" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.97665, 0, 7.96055)
+mesh = SubResource("BoxMesh_tmirq")
+skeleton = NodePath("../..")
+script = ExtResource("1_8pwl8")
+
+[node name="rectangle51" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.97665, 0, 8.96055)
+mesh = SubResource("BoxMesh_tmirq")
+skeleton = NodePath("../..")
+script = ExtResource("1_8pwl8")
+
+[node name="rectangle52" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.97665, 0, 8.96055)
+mesh = SubResource("BoxMesh_tmirq")
+skeleton = NodePath("../..")
+script = ExtResource("1_8pwl8")
+
+[node name="rectangle53" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.97665, 0, 9.93908)
+mesh = SubResource("BoxMesh_tmirq")
+skeleton = NodePath("../..")
+script = ExtResource("1_8pwl8")
+
+[node name="rectangle54" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.97665, 0, 9.93908)
+mesh = SubResource("BoxMesh_tmirq")
+skeleton = NodePath("../..")
+script = ExtResource("1_8pwl8")
+
+[node name="rectangle55" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.97665, 0, 10.9391)
+mesh = SubResource("BoxMesh_tmirq")
+skeleton = NodePath("../..")
+script = ExtResource("1_8pwl8")
+
+[node name="rectangle56" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.97665, 0, 10.9391)
+mesh = SubResource("BoxMesh_tmirq")
+skeleton = NodePath("../..")
+script = ExtResource("1_8pwl8")
+
+[node name="rectangle57" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.97665, 0, -1.9528)
+mesh = SubResource("BoxMesh_tmirq")
+skeleton = NodePath("../..")
+script = ExtResource("1_8pwl8")
+
+[node name="rectangle58" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.97665, 0, -1.9528)
+mesh = SubResource("BoxMesh_tmirq")
+skeleton = NodePath("../..")
+script = ExtResource("1_8pwl8")
+
+[node name="rectangle59" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.97665, 0, -0.952803)
+mesh = SubResource("BoxMesh_tmirq")
+skeleton = NodePath("../..")
+script = ExtResource("1_8pwl8")
+
+[node name="rectangle60" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.97665, 0, -0.952803)
+mesh = SubResource("BoxMesh_tmirq")
+skeleton = NodePath("../..")
+script = ExtResource("1_8pwl8")
+
+[node name="rectangle61" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.97665, 0, -3.89673)
+mesh = SubResource("BoxMesh_tmirq")
+skeleton = NodePath("../..")
+script = ExtResource("1_8pwl8")
+
+[node name="rectangle62" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.97665, 0, -3.89673)
+mesh = SubResource("BoxMesh_tmirq")
+skeleton = NodePath("../..")
+script = ExtResource("1_8pwl8")
+
+[node name="rectangle63" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.97665, 0, -2.89673)
+mesh = SubResource("BoxMesh_tmirq")
+skeleton = NodePath("../..")
+script = ExtResource("1_8pwl8")
+
+[node name="rectangle64" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.97665, 0, -2.89673)
+mesh = SubResource("BoxMesh_tmirq")
+skeleton = NodePath("../..")
+script = ExtResource("1_8pwl8")
+
+[node name="rectangle65" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.90474, 0, 0)
+mesh = SubResource("BoxMesh_tmirq")
+skeleton = NodePath("../..")
+script = ExtResource("1_8pwl8")
+
+[node name="rectangle66" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.904737, 0, 0)
+mesh = SubResource("BoxMesh_tmirq")
+skeleton = NodePath("../..")
+script = ExtResource("1_8pwl8")
+
+[node name="rectangle67" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.90474, 0, 1)
+mesh = SubResource("BoxMesh_tmirq")
+skeleton = NodePath("../..")
+script = ExtResource("1_8pwl8")
+
+[node name="rectangle68" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.904737, 0, 1)
+mesh = SubResource("BoxMesh_tmirq")
+skeleton = NodePath("../..")
+script = ExtResource("1_8pwl8")
+
+[node name="rectangle69" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.90474, 0, 1.95487)
+mesh = SubResource("BoxMesh_tmirq")
+skeleton = NodePath("../..")
+script = ExtResource("1_8pwl8")
+
+[node name="rectangle70" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.904737, 0, 1.95487)
+mesh = SubResource("BoxMesh_tmirq")
+skeleton = NodePath("../..")
+script = ExtResource("1_8pwl8")
+
+[node name="rectangle71" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.90474, 0, 2.95487)
+mesh = SubResource("BoxMesh_tmirq")
+skeleton = NodePath("../..")
+script = ExtResource("1_8pwl8")
+
+[node name="rectangle72" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.904737, 0, 2.95487)
+mesh = SubResource("BoxMesh_tmirq")
+skeleton = NodePath("../..")
+script = ExtResource("1_8pwl8")
+
+[node name="rectangle73" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.90474, 0, 3.97352)
+mesh = SubResource("BoxMesh_tmirq")
+skeleton = NodePath("../..")
+script = ExtResource("1_8pwl8")
+
+[node name="rectangle74" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.904737, 0, 3.97352)
+mesh = SubResource("BoxMesh_tmirq")
+skeleton = NodePath("../..")
+script = ExtResource("1_8pwl8")
+
+[node name="rectangle75" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.90474, 0, 4.97352)
+mesh = SubResource("BoxMesh_tmirq")
+skeleton = NodePath("../..")
+script = ExtResource("1_8pwl8")
+
+[node name="rectangle76" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.904737, 0, 4.97352)
+mesh = SubResource("BoxMesh_tmirq")
+skeleton = NodePath("../..")
+script = ExtResource("1_8pwl8")
+
+[node name="rectangle77" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.90474, 0, 5.8646)
+mesh = SubResource("BoxMesh_tmirq")
+skeleton = NodePath("../..")
+script = ExtResource("1_8pwl8")
+
+[node name="rectangle78" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.904737, 0, 5.8646)
+mesh = SubResource("BoxMesh_tmirq")
+skeleton = NodePath("../..")
+script = ExtResource("1_8pwl8")
+
+[node name="rectangle79" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.90474, 0, 6.8646)
+mesh = SubResource("BoxMesh_tmirq")
+skeleton = NodePath("../..")
+script = ExtResource("1_8pwl8")
+
+[node name="rectangle80" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.904737, 0, 6.8646)
+mesh = SubResource("BoxMesh_tmirq")
+skeleton = NodePath("../..")
+script = ExtResource("1_8pwl8")
+
+[node name="rectangle81" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.90474, 0, 7.96055)
+mesh = SubResource("BoxMesh_tmirq")
+skeleton = NodePath("../..")
+script = ExtResource("1_8pwl8")
+
+[node name="rectangle82" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.904737, 0, 7.96055)
+mesh = SubResource("BoxMesh_tmirq")
+skeleton = NodePath("../..")
+script = ExtResource("1_8pwl8")
+
+[node name="rectangle83" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.90474, 0, 8.96055)
+mesh = SubResource("BoxMesh_tmirq")
+skeleton = NodePath("../..")
+script = ExtResource("1_8pwl8")
+
+[node name="rectangle84" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.904737, 0, 8.96055)
+mesh = SubResource("BoxMesh_tmirq")
+skeleton = NodePath("../..")
+script = ExtResource("1_8pwl8")
+
+[node name="rectangle85" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.90474, 0, 9.93908)
+mesh = SubResource("BoxMesh_tmirq")
+skeleton = NodePath("../..")
+script = ExtResource("1_8pwl8")
+
+[node name="rectangle86" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.904737, 0, 9.93908)
+mesh = SubResource("BoxMesh_tmirq")
+skeleton = NodePath("../..")
+script = ExtResource("1_8pwl8")
+
+[node name="rectangle87" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.90474, 0, 10.9391)
+mesh = SubResource("BoxMesh_tmirq")
+skeleton = NodePath("../..")
+script = ExtResource("1_8pwl8")
+
+[node name="rectangle88" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.904737, 0, 10.9391)
+mesh = SubResource("BoxMesh_tmirq")
+skeleton = NodePath("../..")
+script = ExtResource("1_8pwl8")
+
+[node name="rectangle89" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.90474, 0, -1.9528)
+mesh = SubResource("BoxMesh_tmirq")
+skeleton = NodePath("../..")
+script = ExtResource("1_8pwl8")
+
+[node name="rectangle90" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.904737, 0, -1.9528)
+mesh = SubResource("BoxMesh_tmirq")
+skeleton = NodePath("../..")
+script = ExtResource("1_8pwl8")
+
+[node name="rectangle91" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.90474, 0, -0.952803)
+mesh = SubResource("BoxMesh_tmirq")
+skeleton = NodePath("../..")
+script = ExtResource("1_8pwl8")
+
+[node name="rectangle92" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.904737, 0, -0.952803)
+mesh = SubResource("BoxMesh_tmirq")
+skeleton = NodePath("../..")
+script = ExtResource("1_8pwl8")
+
+[node name="rectangle93" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.90474, 0, -3.89673)
+mesh = SubResource("BoxMesh_tmirq")
+skeleton = NodePath("../..")
+script = ExtResource("1_8pwl8")
+
+[node name="rectangle94" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.904737, 0, -3.89673)
+mesh = SubResource("BoxMesh_tmirq")
+skeleton = NodePath("../..")
+script = ExtResource("1_8pwl8")
+
+[node name="rectangle95" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.90474, 0, -2.89673)
+mesh = SubResource("BoxMesh_tmirq")
+skeleton = NodePath("../..")
+script = ExtResource("1_8pwl8")
+
+[node name="rectangle96" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.904737, 0, -2.89673)
+mesh = SubResource("BoxMesh_tmirq")
+skeleton = NodePath("../..")
+script = ExtResource("1_8pwl8")
+
+[node name="rectangle97" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.94536, 0, 0)
+mesh = SubResource("BoxMesh_tmirq")
+skeleton = NodePath("../..")
+script = ExtResource("1_8pwl8")
+
+[node name="rectangle98" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.94536, 0, 0)
+mesh = SubResource("BoxMesh_tmirq")
+skeleton = NodePath("../..")
+script = ExtResource("1_8pwl8")
+
+[node name="rectangle99" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.94536, 0, 1)
+mesh = SubResource("BoxMesh_tmirq")
+skeleton = NodePath("../..")
+script = ExtResource("1_8pwl8")
+
+[node name="rectangle100" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.94536, 0, 1)
+mesh = SubResource("BoxMesh_tmirq")
+skeleton = NodePath("../..")
+script = ExtResource("1_8pwl8")
+
+[node name="rectangle101" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.94536, 0, 1.95487)
+mesh = SubResource("BoxMesh_tmirq")
+skeleton = NodePath("../..")
+script = ExtResource("1_8pwl8")
+
+[node name="rectangle102" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.94536, 0, 1.95487)
+mesh = SubResource("BoxMesh_tmirq")
+skeleton = NodePath("../..")
+script = ExtResource("1_8pwl8")
+
+[node name="rectangle103" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.94536, 0, 2.95487)
+mesh = SubResource("BoxMesh_tmirq")
+skeleton = NodePath("../..")
+script = ExtResource("1_8pwl8")
+
+[node name="rectangle104" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.94536, 0, 2.95487)
+mesh = SubResource("BoxMesh_tmirq")
+skeleton = NodePath("../..")
+script = ExtResource("1_8pwl8")
+
+[node name="rectangle105" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.94536, 0, 3.97352)
+mesh = SubResource("BoxMesh_tmirq")
+skeleton = NodePath("../..")
+script = ExtResource("1_8pwl8")
+
+[node name="rectangle106" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.94536, 0, 3.97352)
+mesh = SubResource("BoxMesh_tmirq")
+skeleton = NodePath("../..")
+script = ExtResource("1_8pwl8")
+
+[node name="rectangle107" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.94536, 0, 4.97352)
+mesh = SubResource("BoxMesh_tmirq")
+skeleton = NodePath("../..")
+script = ExtResource("1_8pwl8")
+
+[node name="rectangle108" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.94536, 0, 4.97352)
+mesh = SubResource("BoxMesh_tmirq")
+skeleton = NodePath("../..")
+script = ExtResource("1_8pwl8")
+
+[node name="rectangle109" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.94536, 0, 5.8646)
+mesh = SubResource("BoxMesh_tmirq")
+skeleton = NodePath("../..")
+script = ExtResource("1_8pwl8")
+
+[node name="rectangle110" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.94536, 0, 5.8646)
+mesh = SubResource("BoxMesh_tmirq")
+skeleton = NodePath("../..")
+script = ExtResource("1_8pwl8")
+
+[node name="rectangle111" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.94536, 0, 6.8646)
+mesh = SubResource("BoxMesh_tmirq")
+skeleton = NodePath("../..")
+script = ExtResource("1_8pwl8")
+
+[node name="rectangle112" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.94536, 0, 6.8646)
+mesh = SubResource("BoxMesh_tmirq")
+skeleton = NodePath("../..")
+script = ExtResource("1_8pwl8")
+
+[node name="rectangle113" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.94536, 0, 7.96055)
+mesh = SubResource("BoxMesh_tmirq")
+skeleton = NodePath("../..")
+script = ExtResource("1_8pwl8")
+
+[node name="rectangle114" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.94536, 0, 7.96055)
+mesh = SubResource("BoxMesh_tmirq")
+skeleton = NodePath("../..")
+script = ExtResource("1_8pwl8")
+
+[node name="rectangle115" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.94536, 0, 8.96055)
+mesh = SubResource("BoxMesh_tmirq")
+skeleton = NodePath("../..")
+script = ExtResource("1_8pwl8")
+
+[node name="rectangle116" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.94536, 0, 8.96055)
+mesh = SubResource("BoxMesh_tmirq")
+skeleton = NodePath("../..")
+script = ExtResource("1_8pwl8")
+
+[node name="rectangle117" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.94536, 0, 9.93908)
+mesh = SubResource("BoxMesh_tmirq")
+skeleton = NodePath("../..")
+script = ExtResource("1_8pwl8")
+
+[node name="rectangle118" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.94536, 0, 9.93908)
+mesh = SubResource("BoxMesh_tmirq")
+skeleton = NodePath("../..")
+script = ExtResource("1_8pwl8")
+
+[node name="rectangle119" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.94536, 0, 10.9391)
+mesh = SubResource("BoxMesh_tmirq")
+skeleton = NodePath("../..")
+script = ExtResource("1_8pwl8")
+
+[node name="rectangle120" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.94536, 0, 10.9391)
+mesh = SubResource("BoxMesh_tmirq")
+skeleton = NodePath("../..")
+script = ExtResource("1_8pwl8")
+
+[node name="rectangle121" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.94536, 0, -1.9528)
+mesh = SubResource("BoxMesh_tmirq")
+skeleton = NodePath("../..")
+script = ExtResource("1_8pwl8")
+
+[node name="rectangle122" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.94536, 0, -1.9528)
+mesh = SubResource("BoxMesh_tmirq")
+skeleton = NodePath("../..")
+script = ExtResource("1_8pwl8")
+
+[node name="rectangle123" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.94536, 0, -0.952803)
+mesh = SubResource("BoxMesh_tmirq")
+skeleton = NodePath("../..")
+script = ExtResource("1_8pwl8")
+
+[node name="rectangle124" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.94536, 0, -0.952803)
+mesh = SubResource("BoxMesh_tmirq")
+skeleton = NodePath("../..")
+script = ExtResource("1_8pwl8")
+
+[node name="rectangle125" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.94536, 0, -3.89673)
+mesh = SubResource("BoxMesh_tmirq")
+skeleton = NodePath("../..")
+script = ExtResource("1_8pwl8")
+
+[node name="rectangle126" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.94536, 0, -3.89673)
+mesh = SubResource("BoxMesh_tmirq")
+skeleton = NodePath("../..")
+script = ExtResource("1_8pwl8")
+
+[node name="rectangle127" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.94536, 0, -2.89673)
+mesh = SubResource("BoxMesh_tmirq")
+skeleton = NodePath("../..")
+script = ExtResource("1_8pwl8")
+
+[node name="rectangle128" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.94536, 0, -2.89673)
+mesh = SubResource("BoxMesh_tmirq")
+skeleton = NodePath("../..")
+script = ExtResource("1_8pwl8")

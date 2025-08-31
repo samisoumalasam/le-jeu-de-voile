@@ -8,6 +8,7 @@ uniform float roughness : hint_range(0.0, 1.0) = 0.02;
 uniform sampler2D wave;
 uniform sampler2D texture_normal;
 uniform sampler2D texture_normal2;
+uniform float gdscript_time;
 
 uniform vec2 wave_direction = vec2(2.0,0.0);
 uniform vec2 wave_direction2 = vec2(0.0,1.0);
@@ -41,7 +42,7 @@ float edge(float depth){
 void vertex() {
 	// Called for every vertex the material is visible on.
 	world_pos = (MODEL_MATRIX* vec4(VERTEX,1.0)).xyz;
-	height = texture(wave, world_pos.xz / noise_scale + TIME *time_scale).r;
+	height = texture(wave, world_pos.xz / noise_scale + gdscript_time *time_scale).r;
 	VERTEX.y += height * height_scale;
 }
 
@@ -62,8 +63,8 @@ void fragment() {
 	float z_pos = edge(FRAGCOORD.z);
 	float z_dif = z_depth - z_pos;
 	
-	vec2 time = (TIME * wave_direction) * time_scale;
-	vec2 time2 = (TIME * wave_direction2) * time_scale;
+	vec2 time = (gdscript_time * wave_direction) * time_scale;
+	vec2 time2 = (gdscript_time * wave_direction2) * time_scale;
 	
 	//vec3 normal_blend = mix(texture(texture_normal,world_pos.xz + time).rgb,texture(texture_normal2,world_pos.xz+ time2).rgb,0.5);
 	vec3 normal_blend = mix(texture(texture_normal, world_pos.xz / noise_scale + time).rgb, texture(texture_normal2, world_pos.xz / noise_scale + time2).rgb, 0.5);

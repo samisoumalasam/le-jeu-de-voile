@@ -1,34 +1,22 @@
-[gd_scene load_steps=5 format=3 uid="uid://b77xuntub2rtg"]
+[gd_scene load_steps=4 format=3 uid="uid://b77xuntub2rtg"]
 
-[ext_resource type="Material" uid="uid://d3gdd8835alko" path="res://visual_assets/shaders/new_shader_material.tres" id="1_6kj5i"]
-[ext_resource type="PackedScene" uid="uid://ddywhmjm1f06p" path="res://visual_assets/3D_model/optimiste_voile.blend" id="2_jbvbw"]
+[ext_resource type="Material" uid="uid://d3gdd8835alko" path="res://visual_assets/material/new_shader_material.tres" id="1_ubjvq"]
+[ext_resource type="PackedScene" uid="uid://ddywhmjm1f06p" path="res://visual_assets/3D_model/optimiste_voile.blend" id="2_ubjvq"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_cy6w2"]
-size = Vector2(50, 50)
-subdivide_width = 200
-subdivide_depth = 200
+size = Vector2(200, 200)
+subdivide_width = 800
+subdivide_depth = 800
 orientation = 1
-
-[sub_resource type="GDScript" id="GDScript_ubjvq"]
-script/source = "extends Node3D
-
-var height_map_1: NoiseTexture2D
-
-func _ready() -> void:
-	height_map_1 = NoiseTexture2D.new()
-	height_map_1.
-	
-func _process(delta: float) -> void:
-	pass
-"
 
 [node name="Scene" type="Node3D"]
 
 [node name="WaterPlane" type="MeshInstance3D" parent="."]
-material_override = ExtResource("1_6kj5i")
+transform = Transform3D(31.11, 0, 0, 0, 31.11, 0, 0, 0, 31.11, 0, 0, 0)
+material_override = ExtResource("1_ubjvq")
 cast_shadow = 0
 mesh = SubResource("QuadMesh_cy6w2")
+surface_material_override/0 = ExtResource("1_ubjvq")
 
-[node name="optimiste_voile" parent="." instance=ExtResource("2_jbvbw")]
-transform = Transform3D(0.2, 0, 0, 0, 0.199911, -0.00595071, 0, 0.00595071, 0.199911, 2.06421, 7.70421, -1.40915)
-script = SubResource("GDScript_ubjvq")
+[node name="optimiste_voile" parent="." instance=ExtResource("2_ubjvq")]
+transform = Transform3D(25.76, 0, 0, 0, 25.7486, -0.766451, 0, 0.766451, 25.7486, 44.6262, 155.459, 8.40739)

@@ -1,22 +1,7 @@
 extends GeometryInstance3D
 class_name WaterManager
 
-enum WaterParameters {
-	ALBEDO,  
-	ALBEDO_2,
-	METALLIC,
-	ROUGHNESS,
-	WAVE,
-	TEXTURE_NORMAL,
-	TEXTURE_NORMAL2,
-	WAVE_DIRECTION,
-	WAVE_DIRECTION2,
-	TIME_SCALE,
-	NOISE_SCALE,
-	HEIGHT_SCALE,
-	COLOR_DEEP,
-	COLOR_SHALLOW,
-}
+@export var density: float = 1
 
 static var instance: WaterManager
 var shader_material: ShaderMaterial
@@ -37,3 +22,20 @@ func get_water_parameter(waterparam: WaterParameters):
 
 func water_param_enum_to_string(waterparam: WaterParameters) -> String:
 	return (WaterParameters.keys()[waterparam] as String).to_lower()
+
+enum WaterParameters {
+	ALBEDO,  
+	ALBEDO_2,
+	METALLIC,
+	ROUGHNESS,
+	WAVE,
+	TEXTURE_NORMAL,
+	TEXTURE_NORMAL2,
+	WAVE_DIRECTION,
+	WAVE_DIRECTION2,
+	TIME_SCALE,
+	NOISE_SCALE,
+	HEIGHT_SCALE,
+	COLOR_DEEP,
+	COLOR_SHALLOW,
+}

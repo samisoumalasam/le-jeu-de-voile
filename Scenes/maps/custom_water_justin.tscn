@@ -1,8 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://diqtiala8idx4"]
+[gd_scene load_steps=9 format=3 uid="uid://diqtiala8idx4"]
 
-[ext_resource type="Script" uid="uid://565v3quw7jg" path="res://scenes/maps/object_water_physic.gd" id="1_8pwl8"]
-[ext_resource type="Script" uid="uid://damh1if6vtx3h" path="res://scenes/maps/water_manager.gd" id="1_acd8e"]
-[ext_resource type="Material" uid="uid://d3gdd8835alko" path="res://visual_assets/material/new_shader_material.tres" id="1_jl51k"]
+[ext_resource type="Script" uid="uid://565v3quw7jg" path="res://Scenes/maps/object_water_physic.gd" id="1_8pwl8"]
+[ext_resource type="Script" uid="uid://damh1if6vtx3h" path="res://Scenes/maps/water_manager.gd" id="1_acd8e"]
 [ext_resource type="Material" uid="uid://rkrmamce18j3" path="res://visual_assets/material/new_shader_material2.tres" id="1_s44d5"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_tmirq"]
@@ -12,7 +11,20 @@ subdivide_depth = 1000
 orientation = 1
 
 [sub_resource type="BoxMesh" id="BoxMesh_l2dom"]
-size = Vector3(0.2, 0.1, 0.1)
+size = Vector3(0.345, 0.1, 0.45)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_x4gcw"]
+emission_shape_scale = Vector3(1, 10, 1)
+emission_shape = 3
+emission_box_extents = Vector3(10, 0, 10)
+direction = Vector3(0, 0, 5)
+initial_velocity_min = 1.0
+initial_velocity_max = 10.0
+gravity = Vector3(0, 0, 5)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_1m1ru"]
+
+[sub_resource type="Skin" id="Skin_gsv0x"]
 
 [node name="CustomWaterJustin" type="Node3D"]
 
@@ -20,11 +32,10 @@ size = Vector3(0.2, 0.1, 0.1)
 material_override = ExtResource("1_s44d5")
 cast_shadow = 0
 mesh = SubResource("QuadMesh_tmirq")
-surface_material_override/0 = ExtResource("1_jl51k")
 script = ExtResource("1_acd8e")
 
 [node name="rectangle" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.91379, 0)
+transform = Transform3D(4.34, 0, 0, 0, 4.34, 0, 0, 0, 4.34, 0, 7.91379, 0)
 mesh = SubResource("BoxMesh_l2dom")
 script = ExtResource("1_8pwl8")
 
@@ -41,7 +52,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -0.5, -0.5)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, -0.5, 0.5)
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.620669, 0.784073, 0, -0.784073, 0.620669, 0, 6.25453, 2.88882)
+transform = Transform3D(1, 0, 0, 0, 0.799139, 0.601146, 0, -0.601146, 0.799139, 0, 6.25453, 8.04462)
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 0.799139, -0.601146, 0, 0.601146, 0.799139, 0, 1.12984, -2.87473)
+amount = 4
+lifetime = 5.53
+trail_enabled = true
+process_material = SubResource("ParticleProcessMaterial_x4gcw")
+draw_pass_1 = SubResource("PlaneMesh_1m1ru")
+draw_skin = SubResource("Skin_gsv0x")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.580845, 0.814014, 0, -0.814014, 0.580845, -132.422, 5.88168, 0)

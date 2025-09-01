@@ -11,5 +11,5 @@ func _ready() -> void:
 	position = player.position - Vector3(cos(player.rotation.y) * distance_to_player.x, -distance_to_player.y, sin(player.rotation.y) * distance_to_player.z)
 
 func _process(delta: float) -> void:
-	position.lerp(player.position - Vector3(cos(player.rotation.y) * distance_to_player.x, -distance_to_player.y, sin(player.rotation.y) * distance_to_player.z), lerp_coefficient)
+	position.lerp(player.position - Vector3(sin(player.rotation.y) * distance_to_player.x, -distance_to_player.y, cos(player.rotation.y) * distance_to_player.z), lerp_coefficient)
 	look_at(player.position)

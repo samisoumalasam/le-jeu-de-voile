@@ -11,7 +11,6 @@ var corners: Array[Node3D]
 
 func _ready() -> void:
 	object_height = (get_child(0) as Node3D).scale.y
-
 	gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 	weight = gravity * mass
 	
@@ -19,6 +18,10 @@ func _ready() -> void:
 		corners.append(find_child("Corners").get_child(i))
 
 func _physics_process(_delta: float) -> void:
+	calculate_buoyancy()
+	check_and_calculate_saffran_force()
+
+func calculate_buoyancy() -> void:
 	if WaterManager.instance.is_height_map_image_null():
 		apply_force(Vector3(0, -weight, 0))
 		return
@@ -31,3 +34,6 @@ func _physics_process(_delta: float) -> void:
 		var poussee_archimede: float = -WaterManager.instance.density * object_volume * gravity * sink_ratio / 4
 		linear_damp = water_linear_damping * linear_velocity.length() * sink_ratio
 		apply_force(Vector3(0, -poussee_archimede, 0), corner.global_position)
+
+func check_and_calculate_saffran_force() -> void:
+	pass

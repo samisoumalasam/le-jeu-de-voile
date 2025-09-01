@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://c1gp12hsktrgg"
-path="res://.godot/imported/optimiste_voile.blend-71cbc3c3a6918e85b82817e6803d3a09.scn"
+uid="uid://dc4xjhxylugap"
+path="res://.godot/imported/optimiste.blend-2bb51034e31293f46c6fd0945131944c.scn"
 
 [deps]
 
-source_file="res://visual_assets/3D_model/optimiste_voile.blend"
-dest_files=["res://.godot/imported/optimiste_voile.blend-71cbc3c3a6918e85b82817e6803d3a09.scn"]
+source_file="res://visual_assets/3D_model/optimiste.blend"
+dest_files=["res://.godot/imported/optimiste.blend-2bb51034e31293f46c6fd0945131944c.scn"]
 
 [params]
 

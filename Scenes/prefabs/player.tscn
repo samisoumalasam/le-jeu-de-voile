@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=4 uid="uid://lcm3gfxkqw7s"]
 
 [ext_resource type="Script" uid="uid://565v3quw7jg" path="res://Scenes/prefabs/object_water_physic.gd" id="1_81sid"]
-[ext_resource type="PackedScene" uid="uid://ddywhmjm1f06p" path="res://visual_assets/3D_model/optimiste_voile.blend" id="2_xogql"]
+[ext_resource type="PackedScene" uid="uid://dc4xjhxylugap" path="res://visual_assets/3D_model/optimiste.blend" id="3_81sid"]
 [ext_resource type="Shader" uid="uid://d31y24t7b48au" path="res://scripts/shaders/prevent_clipping_water.gdshader" id="3_hdshq"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4sofn"]
@@ -54,7 +54,6 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_wg2px")
 
 [node name="player2" type="RigidBody3D"]
-transform = Transform3D(-0.222484, 0, -0.974936, 0, 1, 0, 0.974936, 0, -0.222484, 0, 0, 0)
 mass = 40.0
 center_of_mass_mode = 1
 center_of_mass = Vector3(0, -8.18, 0)
@@ -64,21 +63,21 @@ object_volume = 100.0
 water_linear_damping = 2.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.507, -0.865, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.213487, -0.865, 0)
 shape = SubResource("BoxShape3D_4sofn")
 
 [node name="MeshVisuals" type="Node3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.700466, 0, 0)
 
-[node name="optimiste_voile" parent="MeshVisuals" instance=ExtResource("2_xogql")]
-transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
-
-[node name="coque_001" type="MeshInstance3D" parent="MeshVisuals"]
+[node name="water_mask" type="MeshInstance3D" parent="MeshVisuals"]
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
 material_override = SubResource("ShaderMaterial_n75ux")
 material_overlay = SubResource("ShaderMaterial_woops")
 mesh = SubResource("ArrayMesh_n75ux")
 skeleton = NodePath("")
+
+[node name="optimiste" parent="MeshVisuals" instance=ExtResource("3_81sid")]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
 
 [node name="Corners" type="Node3D" parent="."]
 
@@ -93,3 +92,6 @@ transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 4.9808, -1.8334, -2.471
 
 [node name="FR" type="Node3D" parent="Corners"]
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, -4.9808, -1.8334, -2.4712)
+
+[node name="saffran" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.37725, -1.25095, 0)

@@ -1,11 +1,85 @@
-[gd_scene load_steps=9 format=3 uid="uid://diqtiala8idx4"]
+[gd_scene load_steps=13 format=3 uid="uid://diqtiala8idx4"]
 
-[ext_resource type="Script" uid="uid://565v3quw7jg" path="res://Scenes/maps/object_water_physic.gd" id="1_8pwl8"]
+[ext_resource type="Shader" uid="uid://to7t555jdhbb" path="res://scripts/shaders/Water2.gdshader" id="1_8pwl8"]
 [ext_resource type="Script" uid="uid://damh1if6vtx3h" path="res://Scenes/maps/water_manager.gd" id="1_acd8e"]
-[ext_resource type="Script" uid="uid://damh1if6vtx3h" path="res://Scenes/maps/water_manager.gd" id="1_acd8e"]
-[ext_resource type="Material" uid="uid://d3gdd8835alko" path="res://visual_assets/material/new_shader_material.tres" id="1_jl51k"]
-[ext_resource type="Material" uid="uid://rkrmamce18j3" path="res://visual_assets/material/new_shader_material2.tres" id="1_s44d5"]
+[ext_resource type="Texture2D" uid="uid://cw8qnlxcbi1ww" path="res://visual_assets/textures/wave_height_map.tres" id="2_s44d5"]
 [ext_resource type="PackedScene" uid="uid://lcm3gfxkqw7s" path="res://Scenes/prefabs/player.tscn" id="4_8pwl8"]
+[ext_resource type="Script" uid="uid://be8pycgd3bqk0" path="res://scenes/maps/camera.gd" id="5_s44d5"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_4sofn"]
+noise_type = 3
+fractal_type = 2
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_n75ux"]
+seamless = true
+as_normal_map = true
+noise = SubResource("FastNoiseLite_4sofn")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_woops"]
+noise_type = 3
+fractal_type = 2
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_bqnkl"]
+seamless = true
+as_normal_map = true
+noise = SubResource("FastNoiseLite_woops")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7djkf"]
+render_priority = 0
+shader = ExtResource("1_8pwl8")
+shader_parameter/albedo = Color(0.176725, 0.517231, 0.669882, 1)
+shader_parameter/albedo2 = Color(0.0562326, 0.340499, 0.340829, 1)
+shader_parameter/metallic = 0.0
+shader_parameter/roughness = 0.077
+shader_parameter/wave = ExtResource("2_s44d5")
+shader_parameter/texture_normal = SubResource("NoiseTexture2D_n75ux")
+shader_parameter/texture_normal2 = SubResource("NoiseTexture2D_bqnkl")
+shader_parameter/gdscript_time = 0.0
+shader_parameter/wave_direction = Vector2(2, 0)
+shader_parameter/wave_direction2 = Vector2(0, 1)
+shader_parameter/time_scale = 0.025
+shader_parameter/noise_scale = 200.0
+shader_parameter/height_scale = 5.0
+shader_parameter/color_deep = Color(0, 0, 0, 1)
+shader_parameter/color_shallow = Color(0, 0, 0, 1)
+shader_parameter/beers_law = 2.0
+shader_parameter/depth_offset = -0.75
+shader_parameter/edge_scale = 0.1
+shader_parameter/near = 1.0
+shader_parameter/far = 100.0
+shader_parameter/edge_color = Color(0, 0, 0, 1)
+shader_parameter/foam_strength = 0.358
+shader_parameter/foam_slope_min = 0.0
+shader_parameter/foam_slope_max = 0.074
+shader_parameter/foam_height_min = 0.164
+shader_parameter/foam_height_max = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_btv3s"]
+render_priority = 0
+shader = ExtResource("1_8pwl8")
+shader_parameter/albedo = Color(0, 0, 0, 1)
+shader_parameter/albedo2 = Color(0, 0, 0, 1)
+shader_parameter/metallic = 0.0
+shader_parameter/roughness = 0.02
+shader_parameter/gdscript_time = 0.0
+shader_parameter/wave_direction = Vector2(2, 0)
+shader_parameter/wave_direction2 = Vector2(0, 1)
+shader_parameter/time_scale = 0.025
+shader_parameter/noise_scale = 10.0
+shader_parameter/height_scale = 0.15
+shader_parameter/color_deep = Color(0, 0, 0, 1)
+shader_parameter/color_shallow = Color(0, 0, 0, 1)
+shader_parameter/beers_law = 2.0
+shader_parameter/depth_offset = -0.75
+shader_parameter/edge_scale = 0.1
+shader_parameter/near = 1.0
+shader_parameter/far = 100.0
+shader_parameter/edge_color = Color(0, 0, 0, 1)
+shader_parameter/foam_strength = 0.7
+shader_parameter/foam_slope_min = 0.05
+shader_parameter/foam_slope_max = 0.2
+shader_parameter/foam_height_min = 0.5
+shader_parameter/foam_height_max = 0.8
 
 [sub_resource type="QuadMesh" id="QuadMesh_tmirq"]
 size = Vector2(200, 200)
@@ -13,26 +87,11 @@ subdivide_width = 1000
 subdivide_depth = 1000
 orientation = 1
 
-[sub_resource type="BoxMesh" id="BoxMesh_l2dom"]
-size = Vector3(0.345, 0.1, 0.45)
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_x4gcw"]
-emission_shape_scale = Vector3(1, 10, 1)
-emission_shape = 3
-emission_box_extents = Vector3(10, 0, 10)
-direction = Vector3(0, 0, 5)
-initial_velocity_min = 1.0
-initial_velocity_max = 10.0
-gravity = Vector3(0, 0, 5)
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_1m1ru"]
-
-[sub_resource type="Skin" id="Skin_gsv0x"]
-
 [node name="CustomWaterJustin" type="Node3D"]
 
 [node name="Water" type="MeshInstance3D" parent="."]
-material_override = ExtResource("1_s44d5")
+material_override = SubResource("ShaderMaterial_7djkf")
+material_overlay = SubResource("ShaderMaterial_btv3s")
 cast_shadow = 0
 mesh = SubResource("QuadMesh_tmirq")
 script = ExtResource("1_acd8e")
@@ -42,18 +101,12 @@ script = ExtResource("1_acd8e")
 [node name="Sun" type="DirectionalLight3D" parent="Environment"]
 transform = Transform3D(1, 0, 0, 0, -0.15471, 0.98796, 0, -0.98796, -0.15471, 0, 30, 0)
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.799139, 0.601146, 0, -0.601146, 0.799139, 0, 6.25453, 8.04462)
-
-[node name="GPUParticles3D" type="GPUParticles3D" parent="Camera3D"]
-transform = Transform3D(1, 0, 0, 0, 0.799139, -0.601146, 0, 0.601146, 0.799139, 0, 1.12984, -2.87473)
-amount = 4
-lifetime = 5.53
-trail_enabled = true
-process_material = SubResource("ParticleProcessMaterial_x4gcw")
-draw_pass_1 = SubResource("PlaneMesh_1m1ru")
-draw_skin = SubResource("Skin_gsv0x")
-
-[node name="player" parent="." instance=ExtResource("4_8pwl8")]
-transform = Transform3D(-0.222484, 0, -0.974936, 0, 1, 0, 0.974936, 0, -0.222484, 0, 5.522, 0)
+[node name="Player" parent="." instance=ExtResource("4_8pwl8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.98295, 0)
 water_linear_damping = 1.0
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-4.16354e-08, 0.304515, -0.952507, 1.33108e-08, 0.952507, 0.304515, 1, 0, -4.37114e-08, -15.1198, 10.8353, 0)
+script = ExtResource("5_s44d5")
+lerp_coefficient = 0.1
+distance_to_player = Vector3(30, 20, 0)
